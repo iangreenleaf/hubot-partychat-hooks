@@ -1,0 +1,12 @@
+{
+  "name":        "hubot-partychat",
+  "version":     "0.1.0",
+  "author":      "Ian Young",
+  "keywords":    "github hubot partychat adapter",
+  "description": "A Partychat adapter for hubot",
+  "dependencies": {
+    "hubot": "https://github.com/github/hubot/tarball/master"
+  },
+  "main": "./hubot-partychat",
+  "engine": "node ~0.4.12"
+}
