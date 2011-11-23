@@ -5,7 +5,7 @@
   "keywords":    "github hubot partychat-hooks adapter",
   "description": "A Partychat-hooks adapter for hubot",
   "dependencies": {
-    "hubot": "https://github.com/github/hubot/tarball/master"
+    "hubot": "~1.1.11"
   },
   "main": "./src/partychat",
   "engine": "node ~0.4.12"
