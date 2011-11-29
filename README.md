@@ -4,8 +4,6 @@ This is an adapter that connects [hubot](http://hubot.github.com/) to [partychat
 
 # Setup #
 
-**Until hubot 2.0, consider this alpha software.**
-
 ## Create a hook ##
 
 1. Log into [partychat-hooks](http://partychat-hooks.appspot.com/) and create a
@@ -28,20 +26,11 @@ This is an adapter that connects [hubot](http://hubot.github.com/) to [partychat
 
 2. Edit `package.json`, adding this to the dependencies:
 
-        "hubot-partychat-hooks": "0.1.0"
+        "hubot-partychat-hooks": "0.x"
 
-3. Install the needed packages. Yes, this process is weird.
+3. Install the needed packages.
 
-        cd my/hubot/dir
         npm install
-        cd node_modules/hubot-partychat-hooks
-        npm install
-        cd node_modules/hubot # You are now two levels deep. INCEPTION
-        npm install
-
-4. Patch your hubot. I had to use
-   [this kludge](https://github.com/iangreenleaf/hubot/commit/f978264904845f32fd042d2f64a631488f6b5f2d)
-   to get my hubot working. You should probably do the same.
 
 ## SYSTEMS ONLINE ##
 
