@@ -1,11 +1,11 @@
 {
   "name":        "hubot-partychat-hooks",
-  "version":     "0.1.0",
+  "version":     "0.2.0",
   "author":      "Ian Young",
   "keywords":    "github hubot partychat-hooks adapter",
   "description": "A Partychat-hooks adapter for hubot",
   "dependencies": {
-    "hubot": "~1.1.11"
+    "hubot": "2.x"
   },
   "main": "./src/partychat",
   "engine": "node ~0.4.12"
