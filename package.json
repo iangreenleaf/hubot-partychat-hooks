@@ -4,9 +4,6 @@
   "author":      "Ian Young",
   "keywords":    "github hubot partychat-hooks adapter",
   "description": "A Partychat-hooks adapter for hubot",
-  "dependencies": {
-    "hubot": "2.x"
-  },
   "main": "./src/partychat",
   "engine": "node ~0.4.12"
 }
