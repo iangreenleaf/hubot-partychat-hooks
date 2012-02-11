@@ -10,8 +10,7 @@ class PartychatAdapter extends Adapter
     @post_hook   = process.env.HUBOT_POST_ENDPOINT
     super robot
 
-  run: ->
-    server = HTTP.createServer (request, response) =>
+    robot.router.post '/partychat', (request, response) =>
       content = ""
       request.addListener "data", (data) ->
         content += data.toString()
@@ -21,7 +20,7 @@ class PartychatAdapter extends Adapter
         response.writeHead 200, 'Content-Type': 'text/plain'
         response.end()
 
-    server.listen (parseInt(process.env.PORT) or 8080), "0.0.0.0"
+  run: ->
 
   send: (user, strings...) ->
     for str in strings
