@@ -11,14 +11,10 @@ class PartychatAdapter extends Adapter
     super robot
 
     robot.router.post '/hubot/partychat', (request, response) =>
-      content = ""
-      request.addListener "data", (data) ->
-        content += data.toString()
-      request.addListener "end", =>
-        [ text, user, line ] =  /^\[([^\]]+)\] (.*)/.exec QS.parse(content).body
-        @receive new Robot.TextMessage @userForName(user), line
-        response.writeHead 200, 'Content-Type': 'text/plain'
-        response.end()
+      [ text, user, line ] =  /^\[([^\]]+)\] (.*)/.exec request.body.body
+      @receive new Robot.TextMessage @userForName(user), line
+      response.writeHead 200, 'Content-Type': 'text/plain'
+      response.end()
 
   run: ->
     @emit "connected"
