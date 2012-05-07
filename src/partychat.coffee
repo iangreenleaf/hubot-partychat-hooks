@@ -10,7 +10,7 @@ class PartychatAdapter extends Adapter
     @post_hook   = process.env.HUBOT_POST_ENDPOINT
     super robot
 
-    robot.router.post '/hubot/partychat', (request, response) =>
+    robot.router.post '/partychat', (request, response) =>
       [ text, user, line ] =  /^\[([^\]]+)\] (.*)/.exec request.body.body
       @receive new Robot.TextMessage @userForName(user), line
       response.writeHead 200, 'Content-Type': 'text/plain'
