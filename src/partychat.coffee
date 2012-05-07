@@ -10,7 +10,7 @@ class PartychatAdapter extends Adapter
     @post_hook   = process.env.HUBOT_POST_ENDPOINT
     super robot
 
-    robot.router.post '/partychat', (request, response) =>
+    robot.router.post '/hubot/partychat', (request, response) =>
       content = ""
       request.addListener "data", (data) ->
         content += data.toString()
