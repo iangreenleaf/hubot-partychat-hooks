@@ -15,10 +15,12 @@ This is an adapter that connects [hubot](http://hubot.github.com/) to [partychat
 
    Take note of the HTTP Endpoint. You'll need to pass this to hubot.
 
-3. Click `New Receive Hook`. Enter `*` as the command sequence, and the
-   address+port that hubot will run at as the HTTP Endpoint. For example:
+3. Click `New Receive Hook`. For the command sequence, enter `*`.
 
-        http://hooks.myserver.com:8080
+   For the HTTP Endpoint, enter the address+port that hubot will run at,
+   plus `/partychat`. For example:
+
+        http://hooks.myserver.com:8080/partychat
 
 ## Set up your hubot ##
 
