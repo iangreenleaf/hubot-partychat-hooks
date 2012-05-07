@@ -21,6 +21,7 @@ class PartychatAdapter extends Adapter
         response.end()
 
   run: ->
+    @emit "connected"
 
   send: (user, strings...) ->
     for str in strings
