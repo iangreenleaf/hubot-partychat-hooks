@@ -15,11 +15,13 @@ class PartychatAdapter extends Adapter
         args = regexp.exec request.body.body
         callback(args[1..]...) if args?
 
-      userId = request.body["on-behalf-of"]
       ifMatch /^\[([^\]]+)\] (.*)/, (user, line) =>
-        @receive new Robot.TextMessage @userForId(userId, name: user), line
+        @receive new Robot.TextMessage @userForId(user), line
       ifMatch /^'([^']+)' is now known as '([^']+)'/, (oldName, newName) =>
-        @userForId(userId, name: oldName).name = newName
+        user = @userForId(oldName)
+        user.name = newName
+        @robot.brain.data.users[newName] = user
+        delete @robot.brain.data.users[oldName]
       response.writeHead 200, 'Content-Type': 'text/plain'
       response.end()
 
