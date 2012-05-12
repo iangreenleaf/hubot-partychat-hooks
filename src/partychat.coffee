@@ -12,7 +12,8 @@ class PartychatAdapter extends Adapter
 
     robot.router.post '/partychat', (request, response) =>
       [ text, user, line ] =  /^\[([^\]]+)\] (.*)/.exec request.body.body
-      @receive new Robot.TextMessage @userForName(user), line
+      userId = request.body["on-behalf-of"]
+      @receive new Robot.TextMessage @userForId(userId, name: user), line
       response.writeHead 200, 'Content-Type': 'text/plain'
       response.end()
 
