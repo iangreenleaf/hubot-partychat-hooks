@@ -11,9 +11,15 @@ class PartychatAdapter extends Adapter
     super robot
 
     robot.router.post '/partychat', (request, response) =>
-      [ text, user, line ] =  /^\[([^\]]+)\] (.*)/.exec request.body.body
+      ifMatch = (regexp, callback) ->
+        args = regexp.exec request.body.body
+        callback(args[1..]...) if args?
+
       userId = request.body["on-behalf-of"]
-      @receive new Robot.TextMessage @userForId(userId, name: user), line
+      ifMatch /^\[([^\]]+)\] (.*)/, (user, line) =>
+        @receive new Robot.TextMessage @userForId(userId, name: user), line
+      ifMatch /^'([^']+)' is now known as '([^']+)'/, (oldName, newName) =>
+        @userForId(userId, name: oldName).name = newName
       response.writeHead 200, 'Content-Type': 'text/plain'
       response.end()
 
