@@ -1,6 +1,6 @@
-Robot = require("hubot").robot()
-Adapter = require("hubot").adapter()
-
+Robot = require("hubot").Robot
+Adapter = require("hubot").Adapter
+TextMessage = require("hubot").TextMessage
 HTTP = require "http"
 URL = require "url"
 QS = require "querystring"
@@ -14,9 +14,9 @@ class PartychatAdapter extends Adapter
       ifMatch = (regexp, callback) ->
         args = regexp.exec request.body.body
         callback(args[1..]...) if args?
-
       ifMatch /^\[([^\]]+)\] (.*)/, (user, line) =>
-        @receive new Robot.TextMessage @userForId(user), line
+        msg = new TextMessage @userForId(user), line
+        @receive msg
       ifMatch /^'([^']+)' is now known as '([^']+)'/, (oldName, newName) =>
         user = @userForId(oldName)
         user.name = newName
@@ -30,7 +30,6 @@ class PartychatAdapter extends Adapter
 
   send: (user, strings...) ->
     for str in strings
-
       url = URL.parse @post_hook
       data = QS.stringify body: str
       opts = {
@@ -57,6 +56,9 @@ class PartychatAdapter extends Adapter
   reply: (user, strings...) ->
     for str in strings
       @send user, "#{user.name}: #{str}"
+      
+  command: (command, strings...) ->
+      @send command, strings
 
 exports.use = (robot) ->
   new PartychatAdapter robot
