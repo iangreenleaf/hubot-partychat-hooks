@@ -2,6 +2,11 @@
 
 This is an adapter that connects [hubot](http://hubot.github.com/) to [partychat](http://partychapp.appspot.com/), by way of [partychat-hooks](http://partychat-hooks.appspot.com/).
 
+# MOSTLY DEAD #
+
+The partychat-hooks service seems to have shut down, so it's probably difficult to use this adapter any more.
+If you do manage to, I'd love to hear about it!
+
 # Setup #
 
 ## Create a hook ##
